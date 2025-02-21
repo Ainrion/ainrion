@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { motion } from 'framer-motion';
@@ -46,7 +47,7 @@ const OfficeLocations = () => {
             Our Office Locations
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            With offices around the globe, we're here to serve you wherever you are.
+            With offices around the globe, we&lsquo;re here to serve you wherever you are.
           </p>
         </motion.div>
 

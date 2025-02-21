@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { motion } from 'framer-motion';
@@ -135,7 +136,7 @@ const TeamSection = () => {
             Join Our Team
           </h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            We're always looking for talented individuals who share our passion for 
+            We&apos;re always looking for talented individuals who share our passion for 
             innovation and excellence. Check out our current openings.
           </p>
           <a

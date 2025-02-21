@@ -1,4 +1,5 @@
-// src/app/layout.tsx
+ 
+
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import Header from '@/components/layout/Header';

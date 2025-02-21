@@ -120,7 +120,7 @@ const ContactForm = () => {
               <CardHeader>
                 <CardTitle>Send us a Message</CardTitle>
                 <CardDescription>
-                  Fill out the form below and we'll get back to you as soon as possible.
+                  Fill out the form below and we&lsquo;ll get back to you as soon as possible.
                 </CardDescription>
               </CardHeader>
               <CardContent>

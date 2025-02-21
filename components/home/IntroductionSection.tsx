@@ -65,7 +65,7 @@ const IntroductionSection = () => {
             variants={fadeInUp}
             className="max-w-2xl mx-auto text-gray-600 text-lg"
           >
-            We're dedicated to empowering businesses through tailored solutions that drive growth,
+            We&lsquo;re dedicated to empowering businesses through tailored solutions that drive growth,
             efficiency, and success in an ever-evolving digital landscape.
           </motion.p>
         </motion.div>

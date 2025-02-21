@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { motion } from 'framer-motion';
@@ -54,11 +55,11 @@ const StoryMission = () => {
             <div className="space-y-4 text-gray-600">
               <p>
                 Our journey started with a dedicated team of experts passionate about solving 
-                complex challenges and delivering tangible results. Today, we're proud to stand 
+                complex challenges and delivering tangible results. Today, we&apos;re proud to stand 
                 at the forefront of digital transformation.
               </p>
               <p>
-                With each project, we've grown not just in size but in our understanding of 
+                With each project, we&apos;ve grown not just in size but in our understanding of 
                 what businesses need to thrive in the digital age. Our experience spans 
                 industries and continents, giving us unique insights into the challenges 
                 of modern business.

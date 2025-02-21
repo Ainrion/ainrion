@@ -63,7 +63,7 @@ const ContactHero = () => {
             Get in Touch
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We're here to help you navigate your digital transformation journey. 
+            We&lsquo;re here to help you navigate your digital transformation journey. 
             Reach out to us for any questions or opportunities.
           </p>
         </motion.div>

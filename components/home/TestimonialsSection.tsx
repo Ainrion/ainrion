@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // src/components/home/TestimonialsSection.tsx
 'use client';
 

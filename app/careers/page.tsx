@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { 
   Search, 
-  Code, 
-  Database, 
   Briefcase,
   Users,
   Coffee,
@@ -17,7 +15,6 @@ import {
   Zap,
   ArrowRight,
   Clock,
-  DollarSign,
   MapPin
 } from 'lucide-react';
 
@@ -370,10 +367,10 @@ export default function CareersPage() {
             className="text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Don't See the Right Fit?
+              Don&apos;t See the Right Fit?
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              We're always looking for talented individuals. Send us your resume and we'll 
+              We&apos;re always looking for talented individuals. Send us your resume and we&lsquo;ll 
               keep you in mind for future opportunities.
             </p>
             <Button 
