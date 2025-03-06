@@ -23,7 +23,7 @@ export async function generateStaticParams() {
   return caseStudies.map(({ caseStudyID }) => ({ caseStudyID }));
 }
 
-export default async function CaseStudyDetailsPage({ params }: { params: { caseStudyID: string } }) {
+export default async function CaseStudyDetailsPage({ params }: { params: Promise<{ caseStudyID: string }> }) {
   const { caseStudyID } = await params;
 
   return (

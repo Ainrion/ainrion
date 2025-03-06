@@ -22,7 +22,7 @@ export async function generateStaticParams() {
     return services.map(({ serviceID }) => ({ serviceID }));
 }
 
-export default async function ServiceIDPage({ params }: { params: { serviceID: string } }) {
+export default async function ServiceIDPage({ params }: { params: Promise<{ serviceID: string }> }) {
     const { serviceID } = await params;
 
     return (
