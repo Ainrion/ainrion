@@ -11,8 +11,18 @@ export const metadata: Metadata = {
     description: 'Explore our comprehensive range of digital services including Digital Transformation, Data Analytics, Cloud Solutions, and AI & Automation.',
 };
 
-export default async function ServiceIDPage({ params }: { params: Promise<{ serviceID: string }> }) {
+export async function generateStaticParams() {
+    const services = [
+        { serviceID: 'digital-transformation' },
+        { serviceID: 'data-analytics' },
+        { serviceID: 'cloud-solutions' },
+        { serviceID: 'ai-automation' }
+    ];
 
+    return services.map(({ serviceID }) => ({ serviceID }));
+}
+
+export default async function ServiceIDPage({ params }: { params: { serviceID: string } }) {
     const { serviceID } = await params;
 
     return (

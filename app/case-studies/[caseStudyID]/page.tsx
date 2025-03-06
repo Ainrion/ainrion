@@ -1,4 +1,4 @@
-// src/app/case-studies/[caseStudyID]page.tsx
+// src/app/case-studies/[caseStudyID]/page.tsx
 
 import type { Metadata } from 'next';
 import CaseStudyHero from '@/components/case-studies/caseStudyID/CaseStudyDetailsHero';
@@ -10,8 +10,21 @@ export const metadata: Metadata = {
   description: 'Explore how Ainrion has helped businesses achieve digital transformation success through innovative technology solutions and strategic implementation.',
 };
 
-export default async function CaseStudyDetailsPage({ params }: { params: Promise<{ caseStudyID: string }> }) {
-    const { caseStudyID } = await params;
+export async function generateStaticParams() {
+  const caseStudies = [
+    { caseStudyID: '1' },
+    { caseStudyID: '2' },
+    { caseStudyID: '3' },
+    { caseStudyID: '4' },
+    { caseStudyID: '5' },
+    { caseStudyID: '6' },
+  ]; 
+
+  return caseStudies.map(({ caseStudyID }) => ({ caseStudyID }));
+}
+
+export default async function CaseStudyDetailsPage({ params }: { params: { caseStudyID: string } }) {
+  const { caseStudyID } = await params;
 
   return (
     <>
