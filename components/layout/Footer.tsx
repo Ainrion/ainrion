@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 const Footer = () => {
   const fadeInUp = {
@@ -27,8 +28,13 @@ const Footer = () => {
             className="space-y-4"
           >
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-[#d64206] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
+              <div className="w-10 h-10 bg-[#1f1f1f] rounded-lg flex items-center justify-center">
+                <Image
+                  src="ainrion.svg"
+                  width={40}
+                  height={40}
+                  alt="Ainrion logo"
+                />
               </div>
               <span className="text-white font-bold text-xl">Ainrion</span>
             </div>
@@ -63,7 +69,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {['About Us', 'Services', 'Case Studies', 'Blog', 'Careers', 'Contact'].map((item) => (
                 <li key={item}>
-                  <Link 
+                  <Link
                     href={`/${item.toLowerCase().replace(' ', '-')}`}
                     className="text-gray-400 hover:text-[#d64206] transition-colors"
                   >
@@ -117,7 +123,7 @@ const Footer = () => {
                 placeholder="Enter your email"
                 className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
               />
-              <Button 
+              <Button
                 className="w-full bg-[#d64206] hover:bg-[#d64206]/90 text-white"
               >
                 Subscribe

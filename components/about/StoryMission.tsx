@@ -73,7 +73,8 @@ const StoryMission = () => {
           >
             <div className="aspect-video rounded-xl overflow-hidden">
               <img 
-                src="/api/placeholder/600/400" 
+                // src="/api/placeholder/600/400" 
+                src="ourjourney.jpg" 
                 alt="Ainrion Journey" 
                 className="w-full h-full object-cover"
               />

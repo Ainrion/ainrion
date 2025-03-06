@@ -1,18 +1,53 @@
 // src/components/home/BottomCTA.tsx
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Mail, Phone } from 'lucide-react';
 
+
 const BottomCTA = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6 }
+    }
+  };
+
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess(false);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Failed to send message");
+
+      setSuccess(true);
+      setFormData({ name: "", email: "", message: "" }); // Clear form
+    } catch {
+      setError("Failed to send message. Try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -33,7 +68,7 @@ const BottomCTA = () => {
           viewport={{ once: true }}
           variants={{
             hidden: { opacity: 0 },
-            visible: { 
+            visible: {
               opacity: 1,
               transition: { staggerChildren: 0.2 }
             }
@@ -46,10 +81,10 @@ const BottomCTA = () => {
               Ready to Transform Your Business?
             </h2>
             <p className="text-gray-300 text-lg mb-8">
-              Get in touch today and discover how our innovative solutions can drive 
+              Get in touch today and discover how our innovative solutions can drive
               your business forward. Our team is ready to help you achieve digital excellence.
             </p>
-            
+
             <div className="space-y-4">
               <div className="flex items-center space-x-3 text-gray-300">
                 <Mail className="w-5 h-5 text-[#d64206]" />
@@ -70,8 +105,8 @@ const BottomCTA = () => {
             <h3 className="text-2xl font-bold text-[#1f1f1f] mb-6">
               Get Started
             </h3>
-            
-            <form className="space-y-4">
+
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium text-gray-700">
                   Name
@@ -79,11 +114,14 @@ const BottomCTA = () => {
                 <Input
                   id="name"
                   type="text"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Your name"
                   className="w-full"
+                  required
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium text-gray-700">
                   Email
@@ -91,29 +129,38 @@ const BottomCTA = () => {
                 <Input
                   id="email"
                   type="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Your email"
                   className="w-full"
+                  required
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium text-gray-700">
                   Message
                 </label>
                 <textarea
                   id="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   rows={4}
                   className="w-full min-h-[100px] px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#d64206] focus:border-transparent"
                   placeholder="How can we help?"
+                  required
                 />
               </div>
-              
-              <Button 
+
+              <Button
                 className="w-full bg-[#d64206] hover:bg-[#d64206]/90 text-white"
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
+
+              {success && <p className="text-green-600 mt-2">Thank you for reaching out! We will get back to you shortly.</p>}
+              {error && <p className="text-red-600 mt-2">{error}</p>}
             </form>
           </motion.div>
         </motion.div>

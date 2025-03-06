@@ -5,13 +5,14 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp, Activity, BarChart } from 'lucide-react';
+import Link from 'next/link';
 
 const caseStudies = [
   {
     id: 1,
     title: "Healthcare Innovation",
     category: "Healthcare",
-    image: "/api/placeholder/600/400",
+    image: "healthcare.jpg", // /api/placeholder/600/400
     description: "Implementing AI-driven diagnostics system resulting in 45% faster patient care",
     results: {
       metric1: "45% Faster",
@@ -86,7 +87,7 @@ const categories = ['All', 'Healthcare', 'Finance', 'Manufacturing', 'Retail', '
 const CaseStudiesGrid = () => {
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const filteredCaseStudies = activeCategory === 'All' 
+  const filteredCaseStudies = activeCategory === 'All'
     ? caseStudies
     : caseStudies.filter(study => study.category === activeCategory);
 
@@ -107,11 +108,10 @@ const CaseStudiesGrid = () => {
                 key={category}
                 variant={activeCategory === category ? "default" : "outline"}
                 onClick={() => setActiveCategory(category)}
-                className={`${
-                  activeCategory === category 
+                className={`${activeCategory === category
                     ? 'bg-[#d64206] text-white hover:bg-[#d64206]/90'
                     : 'text-gray-600 hover:text-[#d64206]'
-                }`}
+                  }`}
               >
                 {category}
               </Button>
@@ -184,12 +184,14 @@ const CaseStudiesGrid = () => {
                     </div>
                   </div>
 
-                  <Button 
-                    className="w-full bg-white hover:bg-gray-50 text-[#d64206] border border-[#d64206]"
-                  >
-                    View Case Study
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
+                  <Link href={`/case-studies/${study.id}`}>
+                    <Button
+                      className="w-full bg-white hover:bg-gray-50 text-[#d64206] border border-[#d64206]"
+                    >
+                      View Case Study
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
                 </div>
               </motion.div>
             ))}

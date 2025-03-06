@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { 
+import {
   Card,
   CardContent,
   CardDescription,
@@ -67,27 +67,42 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+      if (!res.ok) {
+        throw new Error('Failed to send message');
+      }
 
-    // Reset success message after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error(error);
+      
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -178,9 +193,8 @@ const ContactForm = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full min-h-[150px] px-3 py-2 rounded-md border ${
-                        errors.message ? 'border-red-500' : 'border-gray-300'
-                      } focus:outline-none focus:ring-2 focus:ring-[#d64206] focus:border-transparent`}
+                      className={`w-full min-h-[150px] px-3 py-2 rounded-md border ${errors.message ? 'border-red-500' : 'border-gray-300'
+                        } focus:outline-none focus:ring-2 focus:ring-[#d64206] focus:border-transparent`}
                       placeholder="Your message..."
                     />
                     {errors.message && (
@@ -188,7 +202,7 @@ const ContactForm = () => {
                     )}
                   </div>
 
-                  <Button 
+                  <Button
                     type="submit"
                     className="w-full bg-[#d64206] hover:bg-[#d64206]/90 text-white"
                     disabled={isSubmitting}

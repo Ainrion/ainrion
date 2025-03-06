@@ -3,16 +3,33 @@
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 
+
 const AboutHero = () => {
+
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section className="pt-32 pb-20 relative overflow-hidden bg-[#1f1f1f]">
       {/* Background Pattern */}
       <div className="absolute inset-0">
-        <div 
+      <motion.div
+          animate={{
+            backgroundPosition: ['0px 50px', '50px 0px'],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: 'reverse',
+          }}
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: 'radial-gradient(#d64206 1px, transparent 1px)',
-            backgroundSize: '40px 40px'
+            backgroundImage: 'linear-gradient(45deg, #d64206 25%, transparent 25%), linear-gradient(-45deg, #d64206 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #d64206 75%), linear-gradient(-45deg, transparent 75%, #d64206 75%)',
+            backgroundSize: '20px 20px'
           }}
         />
       </div>
@@ -28,18 +45,20 @@ const AboutHero = () => {
             Our Story
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Founded on a vision to redefine technological possibilities, Ainrion began with a simple idea: 
+            Founded on a vision to redefine technological possibilities, Ainrion began with a simple idea:
             to merge innovation with practicality.
           </p>
           <div className="flex justify-center space-x-4">
-            <Button 
+            <Button
+              onClick={() => scrollToSection('team-section')}
               className="bg-[#d64206] hover:bg-[#d64206]/90 text-white text-lg px-8 py-6"
             >
               Meet Our Team
             </Button>
-            <Button 
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-[#1f1f1f] text-lg px-8 py-6"
+            <Button
+              onClick={() => scrollToSection('story-mission')}
+              variant="outline"
+              className="border-white text-[#1f1f1f] hover:bg-white hover:text-[#1f1f1f] text-lg px-8 py-6"
             >
               Our Mission
             </Button>

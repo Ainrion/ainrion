@@ -10,7 +10,7 @@ const TeamSection = () => {
       name: "Aditya Narayan",
       position: "CEO",
       bio: "A visionary leader committed to turning bold ideas into actionable solutions.",
-      image: "/api/placeholder/400/400",
+      image: "adityasir.jpeg",
       social: {
         linkedin: "#",
         twitter: "#"
@@ -20,7 +20,7 @@ const TeamSection = () => {
       name: "Jane Doe",
       position: "CTO",
       bio: "The technical genius behind our cutting-edge platforms, always pushing boundaries.",
-      image: "/api/placeholder/400/400",
+      image: "janedoe.jpg",  // /api/placeholder/400/400
       social: {
         linkedin: "#",
         twitter: "#"
@@ -30,7 +30,7 @@ const TeamSection = () => {
       name: "John Smith",
       position: "CFO",
       bio: "Ensuring financial strength and strategic investments fuel our growth.",
-      image: "/api/placeholder/400/400",
+      image: "johnsmith.jpg",
       social: {
         linkedin: "#",
         twitter: "#"

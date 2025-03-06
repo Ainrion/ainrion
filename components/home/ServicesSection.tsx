@@ -3,10 +3,11 @@
 
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
-import { 
-  RefreshCw, 
-  Database, 
-  Cloud, 
+import Link from 'next/link';
+import {
+  RefreshCw,
+  Database,
+  Cloud,
   Brain,
   ArrowRight
 } from 'lucide-react';
@@ -14,24 +15,28 @@ import {
 const ServicesSection = () => {
   const services = [
     {
+      id: 'digital-transformation',
       icon: <RefreshCw className="w-6 h-6" />,
       title: "Digital Transformation",
       description: "Embrace change with strategies that integrate the latest digital tools for streamlined operations.",
       color: "from-blue-500/20 to-purple-500/20"
     },
     {
+      id: 'data-analytics',
       icon: <Database className="w-6 h-6" />,
       title: "Data Analytics",
       description: "Unlock the hidden potential in your data with actionable insights that fuel smarter decisions.",
       color: "from-green-500/20 to-teal-500/20"
     },
     {
+      id: 'cloud-solutions',
       icon: <Cloud className="w-6 h-6" />,
       title: "Cloud Solutions",
       description: "Scale with confidence using secure, flexible cloud services designed to keep you ahead.",
       color: "from-orange-500/20 to-red-500/20"
     },
     {
+      id: 'ai-automation',
       icon: <Brain className="w-6 h-6" />,
       title: "AI & Automation",
       description: "Revolutionize your workflows with intelligent automation that minimizes errors and maximizes productivity.",
@@ -85,29 +90,32 @@ const ServicesSection = () => {
             >
               <div className="h-full p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-                
+
                 <div className="relative">
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-gradient-to-br ${service.color}`}>
                     <div className="text-[#d64206]">
                       {service.icon}
                     </div>
                   </div>
-                  
+
                   <h3 className="text-xl font-bold text-[#1f1f1f] mb-3">
                     {service.title}
                   </h3>
-                  
+
                   <p className="text-gray-600 mb-4">
                     {service.description}
                   </p>
-                  
-                  <Button
-                    variant="ghost"
-                    className="group/btn text-[#d64206] hover:text-[#d64206] hover:bg-[#d64206]/10"
-                  >
-                    Learn More
-                    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                  </Button>
+
+                  <Link href={`/services/${service.id}`}>
+                    <Button
+                      variant="ghost"
+                      className="group/btn text-[#d64206] hover:text-[#d64206] hover:bg-[#d64206]/10"
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                    </Button>
+                  </Link>
+
                 </div>
               </div>
             </motion.div>

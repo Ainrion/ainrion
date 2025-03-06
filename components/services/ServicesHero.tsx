@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const ServicesHero = () => {
   return (
@@ -39,12 +40,14 @@ const ServicesHero = () => {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
             Comprehensive digital solutions tailored to transform your business and drive innovation.
           </p>
-          <Button 
-            className="bg-[#d64206] hover:bg-[#d64206]/90 text-white px-8 py-6 text-lg"
-          >
-            Schedule a Consultation
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          <Link href="/contact">
+            <Button
+              className="bg-[#d64206] hover:bg-[#d64206]/90 text-white px-8 py-6 text-lg"
+            >
+              Schedule a Consultation
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
         </motion.div>
 
         {/* Service Stats */}

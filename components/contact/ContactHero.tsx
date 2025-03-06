@@ -33,6 +33,18 @@ const ContactHero = () => {
 
   return (
     <section className="pt-32 pb-20 bg-[#1f1f1f] relative overflow-hidden">
+      {/* Moving Gradient Background */}
+      <motion.div
+        animate={{
+          backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: 'linear'
+        }}
+        className="absolute inset-0 bg-gradient-to-br from-[#2a2a2a] via-[#3a3a3a] to-[#1f1f1f] bg-[length:200%_200%]"
+      />
       {/* Animated Background */}
       <div className="absolute inset-0">
         <motion.div

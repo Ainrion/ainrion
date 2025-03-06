@@ -12,21 +12,21 @@ const testimonials = [
     quote: "Ainrion's innovative solutions completely transformed our operational efficiency. Their approach was both strategic and personable, making us feel supported every step of the way.",
     author: "Sarah Chen",
     position: "CTO, TechFlex Solutions",
-    image: "/api/placeholder/64/64"
+    image: "placeholder_testimony.jpeg"  // /api/placeholder/64/64 
   },
   {
     id: 2,
     quote: "Working with Ainrion has been a game-changer for our digital transformation journey. Their expertise in AI and automation helped us achieve remarkable results.",
     author: "Michael Rodriguez",
     position: "CEO, InnovateNow",
-    image: "/api/placeholder/64/64"
+    image: "placeholder_testimony.jpeg"  // /api/placeholder/64/64
   },
   {
     id: 3,
     quote: "The team at Ainrion consistently delivers excellence. Their cloud solutions have helped us scale efficiently while maintaining top-notch security.",
     author: "Emily Thompson",
     position: "Director of Operations, CloudScale",
-    image: "/api/placeholder/64/64"
+    image: "placeholder_testimony.jpeg"  // /api/placeholder/64/64
   }
 ];
 
@@ -86,52 +86,54 @@ const TestimonialsSection = () => {
         </motion.div>
 
         <div className="relative">
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 }
-              }}
-              className="relative"
-            >
-              <div className="max-w-4xl mx-auto text-center">
-                <div className="mb-8 flex justify-center">
-                  <div className="w-16 h-16 bg-[#d64206]/10 rounded-full flex items-center justify-center">
-                    <Quote className="w-8 h-8 text-[#d64206]" />
+          <div className="relative h-[300px] flex items-center justify-center">  {/* added this div to fix the uneccessary expansion of div */}
+            <AnimatePresence initial={false} custom={direction}>
+              <motion.div
+                key={currentIndex}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 }
+                }}
+                className="absolute w-full"
+              >
+                <div className="max-w-4xl mx-auto text-center">
+                  <div className="mb-8 flex justify-center">
+                    <div className="w-16 h-16 bg-[#d64206]/10 rounded-full flex items-center justify-center">
+                      <Quote className="w-8 h-8 text-[#d64206]" />
+                    </div>
+                  </div>
+
+                  <p className="text-xl md:text-2xl text-gray-700 mb-8 italic">
+                    {testimonials[currentIndex].quote}
+                  </p>
+
+                  <div className="flex items-center justify-center space-x-4">
+                    <img
+                      src={testimonials[currentIndex].image}
+                      alt={testimonials[currentIndex].author}
+                      className="w-16 h-16 rounded-full"
+                    />
+                    <div className="text-left">
+                      <h4 className="font-bold text-[#1f1f1f]">
+                        {testimonials[currentIndex].author}
+                      </h4>
+                      <p className="text-gray-600">
+                        {testimonials[currentIndex].position}
+                      </p>
+                    </div>
                   </div>
                 </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-                <p className="text-xl md:text-2xl text-gray-700 mb-8 italic">
-                  {testimonials[currentIndex].quote}
-                </p>
 
-                <div className="flex items-center justify-center space-x-4">
-                  <img
-                    src={testimonials[currentIndex].image}
-                    alt={testimonials[currentIndex].author}
-                    className="w-16 h-16 rounded-full"
-                  />
-                  <div className="text-left">
-                    <h4 className="font-bold text-[#1f1f1f]">
-                      {testimonials[currentIndex].author}
-                    </h4>
-                    <p className="text-gray-600">
-                      {testimonials[currentIndex].position}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          <div className="absolute top-1/2 -translate
-          -y-1/2 left-0 right-0 flex justify-between items-center px-4">
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center px-4 z-10">  {/* added z-10 to fix the button not showing */}
             <button
               onClick={() => paginate(-1)}
               className="p-2 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors"
@@ -157,9 +159,8 @@ const TestimonialsSection = () => {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-[#d64206] w-6' : 'bg-gray-300'
-                }`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-[#d64206] w-6' : 'bg-gray-300'
+                  }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}

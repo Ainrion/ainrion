@@ -2,15 +2,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  RefreshCw, 
-  Database, 
-  Cloud, 
+import {
+  RefreshCw,
+  Database,
+  Cloud,
   Brain,
   Check,
-  ArrowRight 
+  ArrowRight
 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import Link from 'next/link';
 
 const services = [
   {
@@ -18,6 +19,7 @@ const services = [
     icon: <RefreshCw className="w-8 h-8" />,
     title: "Digital Transformation",
     description: "Transform your business with our end-to-end digital transformation solutions. We integrate modern technologies to streamline processes, enhance customer experiences, and drive sustainable growth.",
+    image: "images/digital-transformation/digitaltransformation.jpg",
     benefits: [
       "Process automation and optimization",
       "Enhanced customer experience",
@@ -37,6 +39,7 @@ const services = [
     icon: <Database className="w-8 h-8" />,
     title: "Data Analytics",
     description: "Turn raw data into your most valuable asset. Our analytics services provide deep insights that help you make informed decisions, optimize operations, and stay ahead of the competition.",
+    image: "images/data-analystics/dataanalystics.jpg",
     benefits: [
       "Actionable business insights",
       "Predictive analytics",
@@ -56,6 +59,7 @@ const services = [
     icon: <Cloud className="w-8 h-8" />,
     title: "Cloud Solutions",
     description: "Experience secure, scalable, and flexible cloud services that grow with your business. Our cloud solutions are designed to enhance performance while ensuring data security and compliance.",
+    image: "images/cloud/cloud.jpg",
     benefits: [
       "Improved scalability",
       "Cost optimization",
@@ -75,6 +79,7 @@ const services = [
     icon: <Brain className="w-8 h-8" />,
     title: "AI & Automation",
     description: "Leverage the power of artificial intelligence to automate routine tasks and boost efficiency. Our AI-driven solutions not only reduce costs but also improve accuracy across your operations.",
+    image: "images/AI/AI.jpg",
     benefits: [
       "Increased productivity",
       "Cost reduction",
@@ -115,20 +120,19 @@ const ServiceDetails = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 }
               }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                }`}
             >
               {/* Content */}
               <div className="space-y-6">
                 <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center text-[#d64206]`}>
                   {service.icon}
                 </div>
-                
+
                 <h2 className="text-3xl font-bold text-[#1f1f1f]">
                   {service.title}
                 </h2>
-                
+
                 <p className="text-gray-600 text-lg">
                   {service.description}
                 </p>
@@ -159,21 +163,23 @@ const ServiceDetails = () => {
                   </div>
                 </div>
 
-                <Button 
-                  className="bg-[#d64206] hover:bg-[#d64206]/90 text-white mt-6"
-                >
-                  Learn More 
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
+                <Link href={`/services/${service.id}`}>
+                  <Button
+                    className="bg-[#d64206] hover:bg-[#d64206]/90 text-white mt-6"
+                  >
+                    Learn More
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
               </div>
 
               {/* Image/Illustration */}
-              <div className="relative">
-                <div className="aspect-video rounded-xl overflow-hidden bg-gray-100">
-                  <img 
-                    src={`/api/placeholder/600/400`}
+              <div className="relative w-full lg:w-[110%]">
+                <div className="aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 shadow-lg">
+                  <img
+                    src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover scale-105"
                   />
                 </div>
               </div>

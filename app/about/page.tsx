@@ -1,4 +1,5 @@
 // src/app/about/page.tsx
+
 import type { Metadata } from 'next';
 import AboutHero from '@/components/about/AboutHero';
 import StoryMission from '@/components/about/StoryMission';
@@ -15,9 +16,13 @@ export default function AboutPage() {
   return (
     <>
       <AboutHero />
-      <StoryMission />
+      <section id="story-mission">
+        <StoryMission />
+      </section>
       <MilestonesSection />
-      <TeamSection />
+      <section id="team-section">
+        <TeamSection />
+      </section>
       <BottomCTA />
     </>
   );
