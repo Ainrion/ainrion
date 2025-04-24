@@ -96,11 +96,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3 text-gray-400">
                 <Phone size={20} />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 735-584-8551</span>
               </li>
-              <li className="flex items-center space-x-3 text-gray-400">
-                <MapPin size={20} />
-                <span>123 Innovation Drive, Tech City, USA</span>
+              <li className="flex items-start space-x-3 text-gray-400">
+                <MapPin size={20} className="flex-shrink-0 mt-1" />
+                <span>Babu Bajar Ara, Ward No.-20, Arrah, P.O:Arrah, Bhojpur, 802301</span>
               </li>
             </ul>
           </motion.div>

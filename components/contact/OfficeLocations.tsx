@@ -7,12 +7,12 @@ import { MapPin, Phone, Mail, Globe } from 'lucide-react';
 const OfficeLocations = () => {
   const offices = [
     {
-      city: "Tech City HQ",
-      address: "123 Innovation Drive, Tech City, USA",
-      phone: "+1 (555) 123-4567",
-      email: "techcity@ainrion.com",
-      timezone: "EST (UTC-5)",
-      image: "/api/placeholder/600/400"
+      city: "Arrah Office",
+      address: "Babu Bajar Ara, Ward No.-20, Arrah, P.O:Arrah, Bhojpur, 802301",
+      phone: "+91 735-584-8551", 
+      email: "info@ainrion.com", 
+      timezone: "IST (UTC+5:30)",
+      image: "/api/placeholder/600/400" 
     },
     {
       city: "European Office",

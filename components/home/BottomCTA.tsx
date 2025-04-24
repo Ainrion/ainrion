@@ -92,7 +92,7 @@ const BottomCTA = () => {
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <Phone className="w-5 h-5 text-[#d64206]" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 735-584-8551</span>
               </div>
             </div>
           </motion.div>

@@ -14,13 +14,13 @@ const ContactHero = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      details: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      details: "+91 735-584-8551",
+      link: "tel:+917355848551"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Visit Us",
-      details: "123 Innovation Drive, Tech City, USA",
+      details: "Babu Bajar Ara, Ward No.-20, Arrah, P.O:Arrah, Bhojpur, 802301",
       link: "#map"
     },
     {
@@ -75,9 +75,12 @@ const ContactHero = () => {
             Get in Touch
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We&lsquo;re here to help you navigate your digital transformation journey. 
+            We&lsquo;re here to help you navigate your digital transformation journey.
             Reach out to us for any questions or opportunities.
           </p>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mt-6">
+            Legal Name: Aditya Narayan
+          </h1>
         </motion.div>
 
         <motion.div
@@ -101,11 +104,10 @@ const ContactHero = () => {
               }}
               className="relative group"
             >
-              <a 
-                href={info.link || '#'} 
-                className={`block bg-white/5 backdrop-blur-sm p-6 rounded-xl hover:bg-white/10 transition-all duration-300 ${
-                  info.link ? 'cursor-pointer' : 'cursor-default'
-                }`}
+              <a
+                href={info.link || '#'}
+                className={`block bg-white/5 backdrop-blur-sm p-6 rounded-xl hover:bg-white/10 transition-all duration-300 ${info.link ? 'cursor-pointer' : 'cursor-default'
+                  }`}
               >
                 <div className="w-12 h-12 bg-[#d64206]/10 rounded-lg flex items-center justify-center text-[#d64206] mb-4">
                   {info.icon}
