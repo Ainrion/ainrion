@@ -1,0 +1,111 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  CONTENT_WRITER
+  HR
+}
+
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  REMOTE
+}
+
+model User {
+  id        String      @id @default(cuid())
+  email     String      @unique
+  password  String
+  name      String
+  role      Role        @default(CONTENT_WRITER)
+  isActive  Boolean     @default(true)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  blogPosts BlogPost[]
+
+  @@index([email])
+  @@map("users")
+}
+
+model BlogPost {
+  id            String     @id @default(cuid())
+  slug          String     @unique
+  title         String
+  excerpt       String
+  content       String     @db.Text
+  featuredImage String?
+  category      String
+  tags          String[]
+  author        String
+  date          DateTime   @default(now())
+  readTime      String
+  status        BlogStatus @default(DRAFT)
+  authorId      String?
+  authorUser    User?      @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@index([slug])
+  @@index([status])
+  @@index([category])
+  @@map("blog_posts")
+}
+
+model Job {
+  id               String        @id @default(cuid())
+  slug             String        @unique
+  title            String
+  department       String
+  location         String
+  type             JobType
+  postedDate       DateTime      @default(now())
+  description      String        @db.Text
+  requirements     String[]
+  responsibilities String[]
+  isActive         Boolean       @default(true)
+  applications     Application[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([slug])
+  @@index([isActive])
+  @@map("jobs")
+}
+
+model Application {
+  id          String   @id @default(cuid())
+  jobId       String
+  job         Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  name        String
+  email       String
+  phone       String
+  resumeUrl   String   // URL to uploaded CV file
+  coverLetter String   @db.Text
+  appliedDate DateTime @default(now())
+  status      String   @default("pending")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([jobId])
+  @@index([email])
+  @@map("applications")
+}
