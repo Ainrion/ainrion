@@ -13,6 +13,7 @@ import Link from "next/link"
 import { generateSlug } from "@/lib/careers-data"
 import { useToast } from "@/hooks/use-toast"
 import { useAdminAuth } from "@/hooks/use-admin-auth"
+import { Job } from "@/lib/careers-data"
 
 export default function NewJobPage() {
   const { isLoading } = useAdminAuth()
