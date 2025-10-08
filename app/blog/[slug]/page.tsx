@@ -161,7 +161,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             {/* Tags */}
             <div className="mt-12 pt-8 border-t border-border">
               <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
+                {post.tags.map((tag: string) => (
                   <span
                     key={tag}
                     className="px-3 py-1 bg-card border border-border rounded-full text-sm text-muted-foreground"
